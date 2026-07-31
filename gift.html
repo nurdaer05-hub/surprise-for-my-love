@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎁 ของขวัญสำหรับเธอ</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#fff5f8);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+text-align:center;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+width:90%;
+max-width:500px;
+z-index:2;
+}
+
+#gift{
+font-size:120px;
+cursor:pointer;
+transition:.4s;
+}
+
+#gift:hover{
+transform:scale(1.1);
+}
+
+#message{
+display:none;
+margin-top:20px;
+}
+
+h1{
+color:#ff4d88;
+}
+
+p{
+font-size:20px;
+line-height:1.8;
+color:#555;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:24px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div id="gift" onclick="openGift()">
+🎁
+</div>
+
+<div id="message">
+
+<h1>Happy Anniversary ❤️</h1>
+
+<p>
+ขอบคุณที่เข้ามาในชีวิตเค้า<br><br>
+
+ขอบคุณสำหรับทุกความทรงจำ<br><br>
+
+เค้าหวังว่าเราจะเดินไปด้วยกันอีกนาน ๆ ❤️
+</p>
+
+<h2>รักเธอที่สุด 🤍</h2>
+
+</div>
+
+</div>
+
+<script>
+
+function openGift(){
+
+document.getElementById("gift").innerHTML="💖";
+
+document.getElementById("message").style.display="block";
+
+for(let i=0;i<120;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML=Math.random()>0.5?"❤️":"💖";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.fontSize=(18+Math.random()*25)+"px";
+
+h.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
