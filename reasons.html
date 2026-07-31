@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เหตุผลที่รักเธอ ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd1dc,#fff5f8);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:20px;
+width:85%;
+max-width:500px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+color:#ff4d88;
+}
+
+#reason{
+font-size:24px;
+margin:40px 0;
+color:#555;
+min-height:80px;
+}
+
+button{
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:#ff4d88;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff2f72;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-50px);}
+100%{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>❤️ เหตุผลที่เค้ารักเธอ ❤️</h1>
+
+<div id="reason"></div>
+
+<button onclick="nextReason()">เหตุผลถัดไป</button>
+
+</div>
+
+<script>
+
+const reasons=[
+"❤️ รอยยิ้มของเธอทำให้ทุกวันสดใส",
+"🤍 เธอคอยอยู่ข้างเค้าเสมอ",
+"🌸 เธอทำให้เค้ารู้สึกอบอุ่น",
+"💖 ทุกครั้งที่อยู่ด้วยกัน เค้ามีความสุข",
+"🥰 เธอเป็นกำลังใจที่ดีที่สุด",
+"🌷 ขอบคุณที่ไม่เคยปล่อยมือเค้า",
+"💕 เค้าชอบทุกอย่างที่เป็นเธอ",
+"💞 เธอคือคนพิเศษที่สุด",
+"🌹 เค้าอยากสร้างความทรงจำกับเธอไปอีกนาน",
+"❤️ เค้ารักเธอที่สุด"
+];
+
+let i=0;
+
+function nextReason(){
+
+document.getElementById("reason").innerHTML=reasons[i];
+
+i++;
+
+if(i>=reasons.length){
+window.location.href="gift.html";
+}
+
+}
+
+nextReason();
+
+for(let j=0;j<40;j++){
+
+let h=document.createElement("div");
+
+h.innerHTML="❤️";
+
+h.className="heart";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+}
+
+</script>
+
+</body>
+</html>
