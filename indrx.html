@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สำหรับคนพิเศษ ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+width:320px;
+}
+
+h1{
+color:#ff4d6d;
+}
+
+input{
+width:90%;
+padding:12px;
+font-size:16px;
+border-radius:10px;
+border:1px solid #ccc;
+margin-top:15px;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e6395d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>🔒 เว็บไซต์ลับ</h1>
+
+<p>สำหรับคนที่เค้ารักที่สุด</p>
+
+<input type="password" id="pass" placeholder="ใส่รหัสผ่าน">
+
+<br>
+
+<button onclick="check()">เข้าสู่เว็บไซต์ ❤️</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+function check(){
+
+let password=document.getElementById("pass").value;
+
+if(password=="051067"){
+window.location.href="love.html";
+}else{
+document.getElementById("msg").innerHTML="❌ รหัสผ่านไม่ถูกต้อง";
+}
+
+}
+</script>
+
+</body>
+</html>
