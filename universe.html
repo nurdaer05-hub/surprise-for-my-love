@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever Together ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+background:#02030d;
+font-family:Arial,sans-serif;
+color:white;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+}
+
+.content{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+z-index:10;
+width:90%;
+}
+
+h1{
+font-size:52px;
+color:#ff80bf;
+text-shadow:0 0 30px #ff4d88;
+opacity:0;
+animation:fadeIn 3s forwards;
+}
+
+#typing{
+margin-top:30px;
+font-size:28px;
+line-height:2;
+white-space:pre-line;
+min-height:170px;
+}
+
+.bigHeart{
+
+font-size:170px;
+
+margin-top:20px;
+
+animation:heartbeat 1.5s infinite;
+
+opacity:0;
+
+transition:2s;
+
+filter:drop-shadow(0 0 40px #ff4d88);
+
+}
+
+#next{
+
+display:none;
+
+margin-top:50px;
+
+padding:18px 40px;
+
+font-size:22px;
+
+border:none;
+
+border-radius:50px;
+
+background:#ff4d88;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#next:hover{
+
+background:#ff2f72;
+
+transform:scale(1.05);
+
+}
+
+@keyframes heartbeat{
+
+0%{transform:scale(1);}
+
+50%{transform:scale(1.18);}
+
+100%{transform:scale(1);}
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.star{
+
+position:absolute;
+
+background:white;
+
+border-radius:50%;
+
+animation:twinkle 3s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
+
+.shooting{
+
+position:absolute;
+
+width:3px;
+
+height:120px;
+
+background:linear-gradient(white,transparent);
+
+transform:rotate(45deg);
+
+animation:shoot 4s linear infinite;
+
+opacity:.7;
+
+}
+
+@keyframes shoot{
+
+0%{
+
+transform:translate(-200px,-200px) rotate(45deg);
+
+}
+
+100%{
+
+transform:translate(1600px,900px) rotate(45deg);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="universe"></canvas>
+
+<div class="content">
+
+<h1>🌌 Forever Together ❤️</h1>
+
+<div class="bigHeart" id="heart">
+
+❤️
+
+</div>
+
+<div id="typing"></div>
+
+<button id="next" onclick="location.href='gift.html'">
+
+🎁 เปิดของขวัญ
+
+</button>
+  <script>
+const canvas = document.getElementById("universe");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+// ดาวพื้นหลัง
+const stars = [];
+for(let i=0;i<250;i++){
+  stars.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*2+0.5,
+    a:Math.random(),
+    d:Math.random()*0.02
+  });
+}
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(const s of stars){
+    s.a += s.d;
+    if(s.a>1 || s.a<0){
+      s.d *= -1;
+    }
+
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,255,255,"+s.a+")";
+    ctx.fill();
+  }
+
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// ดาวตก
+function shootingStar(){
+
+  const star=document.createElement("div");
+  star.className="shooting";
+
+  star.style.left=Math.random()*window.innerWidth+"px";
+  star.style.top=Math.random()*250+"px";
+
+  document.body.appendChild(star);
+
+  setTimeout(()=>{
+      star.remove();
+  },4000);
+
+}
+
+setInterval(shootingStar,3500);
+
+// ข้อความพิมพ์ทีละตัว
+const text = `
+
+In this endless universe...
+
+I found you ❤️
+
+Yesterday
+
+Today
+
+Tomorrow
+
+Forever...
+
+670 Days Together
+
+Happy Anniversary
+
+I Love You Forever ❤️
+
+`;
+
+let i=0;
+
+function type(){
+
+ if(i<text.length){
+
+   document.getElementById("typing").innerHTML+=text.charAt(i);
+
+   i++;
+
+   setTimeout(type,70);
+
+ }
+
+}
+
+setTimeout(type,2500);
+
+// หัวใจโผล่
+setTimeout(()=>{
+
+ document.getElementById("heart").style.opacity="1";
+
+},1800);
+
+// ปุ่มแสดงหลัง 1 นาที
+setTimeout(()=>{
+
+ document.getElementById("next").style.display="inline-block";
+
+},60000);
+</script>
+
+<!-- ใส่ไฟล์เสียงของคุณ -->
+<audio id="loveAudio" autoplay>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
+
+
+  
+
+</div>
